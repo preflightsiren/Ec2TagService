@@ -7,4 +7,5 @@ group :development do
   gem "jeweler", "~> 1.8.4"
   gem "simplecov", ">= 0"
   gem "rspec"
+  gem "rack-test"
 end
