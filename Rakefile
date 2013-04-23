@@ -14,8 +14,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "ec2-tag-service"
-  gem.homepage = "http://github.com/preflightsiren/ec2-tag-service"
+  gem.name = "ec2tagservice"
+  gem.homepage = "http://github.com/preflightsiren/ec2tagservice"
   gem.license = "MIT"
   gem.summary = %Q{A REST service to query ec2 tags based upon an ec2 instanceid}
   gem.description = %Q{makes it easier to query ec2 tags for your ec2 instances}
@@ -28,5 +28,8 @@ Jeweler::RubygemsDotOrgTasks.new
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new('spec')
 
+desc "Start the ec2-tag service"
 task :run do
+  require File.join(File.dirname(__FILE__), 'lib', 'ec2tagservice.rb')
+  Ec2TagService.Run!
 end
