@@ -15,8 +15,7 @@ require 'rubygems'
 require 'yaml'
 require 'aws-sdk'
 
-config_file = File.join(File.dirname(__FILE__),
-                        "config.yml")
+config_file = File.join(File.dirname(__FILE__), "config.yml")
 unless File.exist?(config_file)
   puts <<END
 To run the samples, put your credentials in config.yml as follows:
