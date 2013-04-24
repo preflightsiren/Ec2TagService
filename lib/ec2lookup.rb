@@ -18,7 +18,7 @@ def lookup_tags instance_id
 	tags.each do |k,v|
 		hash = hash.merge(Hash[k,v])
 	end
-	JSON.generate(hash)
+	hash
 end
 
 

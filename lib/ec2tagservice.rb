@@ -12,10 +12,21 @@ class Ec2TagService < Sinatra::Base
     "Hello World!"
   end
 
-  get '/:instance_id' do
-  	pass unless request.accept? 'application/json'
-    lookup_tags params[:instance_id]
+  get '/:instance_id.?:format?' do
+    content_type 'text/plain'
+    #pass unless request.accept? 'application/json'
+    tags = lookup_tags params[:instance_id]
+    
+    case params[:format]
+    when 'json'
+      JSON.generate(tags)
+    else
+      output = String.new
+      tags.each do |tag, value|
+        output << "#{tag}=#{value}\n"
+      end
+      output
+    end
   end
 end
 
-Ec2TagService.run!
