@@ -30,6 +30,5 @@ RSpec::Core::RakeTask.new('spec')
 
 desc "Start the ec2-tag service"
 task :run do
-  require File.join(File.dirname(__FILE__), 'lib', 'ec2tagservice.rb')
-  Ec2TagService.Run!
+  Rake.sh('ruby -Ilib bin/tag-service')
 end
