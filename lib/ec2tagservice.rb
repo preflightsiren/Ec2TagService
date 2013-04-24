@@ -18,14 +18,16 @@ class Ec2TagService < Sinatra::Base
     tags = lookup_tags params[:instance_id]
     
     case params[:format]
-    when 'json'
-      JSON.generate(tags)
-    else
+    when nil
       output = String.new
       tags.each do |tag, value|
         output << "#{tag}=#{value}\n"
       end
       output
+    when 'json'
+      JSON.generate(tags)
+    else
+      raise "Sorry, #{params[:format]} formatting is not yet supported."
     end
   end
 end
