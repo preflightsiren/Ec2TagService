@@ -26,6 +26,8 @@ class Ec2TagService < Sinatra::Base
       output
     when 'json'
       JSON.generate(tags)
+    when 'ico'
+      ''
     else
       raise "Sorry, #{params[:format]} formatting is not yet supported."
     end
