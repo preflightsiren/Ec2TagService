@@ -4,6 +4,8 @@ require File.expand_path(File.dirname(__FILE__) + '/ec2lookup.rb')
 
 class Ec2TagService < Sinatra::Base 
 
+  set :bind, '0.0.0.0'
+
   def instance_tags instance_id
     "Searching for #{instance_id}\n\n"
   end
